@@ -2,6 +2,7 @@
   "expo": {
     "name": "TrackerApp",
     "slug": "TrackerApp",
+
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,6 +16,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.trackerapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
