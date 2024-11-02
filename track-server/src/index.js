@@ -1,11 +1,14 @@
+require("./models/User");
 const express = require("express");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
-const bodyParser = require("body-parser");
-app.use(express.json());
+const requireAuth = require("./middlewares/requireAuth");
+
 const app = express();
-app.use(bodyParser.json());
+
+app.use(express.json());
 app.use(authRoutes);
+
 const port = 3000;
 
 // MongoDB Atlas connection string
@@ -18,8 +21,8 @@ mongoose
   .catch((err) => console.log(err));
 
 // Basit bir GET route
-app.get("/", (req, res) => {
-  res.send("MongoDB ile bağlantı başarılı!");
+app.get("/", requireAuth, (req, res) => {
+  res.send(`Your email: ${req.user.email}`);
 });
 
 // Sunucuyu başlat
